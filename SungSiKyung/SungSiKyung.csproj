@@ -9,7 +9,6 @@
     <Folder Include="Data\" />
     <Folder Include="Rendering\" />
     <Folder Include="Script\Data\" />
-    <Folder Include="Script\Content\" />
     <Folder Include="Script\Rendering\" />
   </ItemGroup>
 
