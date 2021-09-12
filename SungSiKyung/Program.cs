@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SungSiKyung.Script.Managers;
+using System;
 
 namespace SungSiKyung
 {
@@ -6,7 +7,7 @@ namespace SungSiKyung
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Managers.GameMgr.StartScene();
         }
     }
 }
