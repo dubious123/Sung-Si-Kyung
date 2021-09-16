@@ -1,4 +1,5 @@
-﻿using SungSiKyung.Script.Utils;
+﻿using SungSiKyung.Scene;
+using SungSiKyung.Script.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,21 @@ namespace SungSiKyung.Script.Managers
 {
     public class SceneManager
     {
-        Define.SceneType _currentScene;
-        public Define.SceneType CurrentScene { get { return _currentScene; } }
+        public BaseScene CurrentScene { get { return _currentScene; } }
+        List<BaseScene> _sceneBuffer;
+        BaseScene _currentScene;
         public void Init()
         {
-            _currentScene = Define.SceneType.Game;
+            //Todo --> Data
+            _sceneBuffer = new List<BaseScene>();
+            _currentScene = new GameScene();
+            _sceneBuffer.Add(_currentScene);
+        }
+        public BaseScene SwitchScene(Define.SceneType type)
+        {
+            //Todo
+            if(_currentScene?.Type == type) { return _currentScene; }
+            return _currentScene;
         }
     }
 }

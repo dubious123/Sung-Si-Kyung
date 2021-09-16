@@ -97,6 +97,10 @@ namespace SungSiKyung.Script.Utils
         {
             return !Equals(left, right);
         }
+        //public static implicit operator Vector2Int(Vector2 vector)
+        //{
+        //    return new Vector2Int((int)vector.x, (int)vector.y);
+        //}
         public override bool Equals(object obj)
         {
             return base.Equals(obj);

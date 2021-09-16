@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SungSiKyung.Scene
+namespace SungSiKyung.Interfaces
 {
-    public class GameScene : BaseScene
+    public interface IUseGravity
     {
-
     }
 }

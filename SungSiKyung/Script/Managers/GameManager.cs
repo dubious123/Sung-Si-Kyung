@@ -1,4 +1,5 @@
-﻿using SungSiKyung.Script.Content;
+﻿using SungSiKyung.Scene;
+using SungSiKyung.Script.Content;
 using SungSiKyung.Script.Utils;
 using System;
 using System.Collections.Generic;
@@ -20,20 +21,24 @@ namespace SungSiKyung.Script.Managers
         }
         public void Init()
         {
-
+            
         }
         void CreatePlayer()
         {
             _player = new Player();
         }
-        public void StartScene()
+        public void StartGame()
         {
+            Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
+            CreatePlayer();
+            Managers.SceneMgr.CurrentScene.AddUnit(_player);
             while (true)
             {
                 Managers.InputMgr.GetInput();
                 if (Managers.TimingMgr.FrameControl())
                 {
-                    Console.WriteLine("SceneLoaded");
+                    Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
+                    Managers.RenderMgr.RenderScene();
                 }
             }
         }
