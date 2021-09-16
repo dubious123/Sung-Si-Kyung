@@ -12,6 +12,7 @@ namespace SungSiKyung.Script.Managers
         {
 
         }
+
         public void GetInput()
         {
 

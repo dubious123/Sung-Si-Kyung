@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SungSiKyung.Scene
+namespace SungSiKyung.Data
 {
-    public class GameScene : BaseScene
+    public class GameObject_Static : GameObject
     {
-
     }
 }
