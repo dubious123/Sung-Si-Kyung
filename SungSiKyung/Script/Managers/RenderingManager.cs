@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using SungSiKyung.Data;
+using SungSiKyung.Script.Utils;
 
 namespace SungSiKyung.Script.Managers
 {
@@ -19,7 +20,7 @@ namespace SungSiKyung.Script.Managers
             //Test
             Console.CursorVisible = false;
             Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight*2);
             _builder = new StringBuilder();
             
         }
@@ -31,7 +32,7 @@ namespace SungSiKyung.Script.Managers
         {
             ClearConsole();
             RenderDynamic();
-           
+            FasterConsole.Flush();
         }
         void RenderDynamic()
         {
@@ -40,10 +41,17 @@ namespace SungSiKyung.Script.Managers
                 //Todo
                 //foreach(Vector2 delta in go.image){print}
                 Console.SetCursorPosition((int)go.Transform.Position.x,(int)go.Transform.Position.y);
-                Console.WriteLine("@@@@@");
-                Console.WriteLine("@@@@@");
-                Console.WriteLine("@@@@@");
-                Console.WriteLine("@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
+
             }
         }
     }
