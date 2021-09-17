@@ -14,7 +14,12 @@ namespace SungSiKyung.Script.Managers
 
         }
 
-        public class Image
+        public class Data
+        {
+
+        }
+
+        public class Image : Data
         {
 
             public int[,] inputPixel;
@@ -23,6 +28,11 @@ namespace SungSiKyung.Script.Managers
             {
                 this.inputPixel = inputPixel;
             }
+        }
+
+        public class Pixel
+        {
+
         }
 
         public static int[,] pixel1 = {{ 0, 1, 1, 1, 1 },{0,1,1,1,1},{0,1,1,1,1},{0,1,1,1,1},{0,0,1,0,0},{0,1,1,1,0},
@@ -36,7 +46,7 @@ namespace SungSiKyung.Script.Managers
             {"idle2", new Image(pixel2) }
         };
 
-        public static int[,] Load(string _value)
+        public static int[,] Load<T>(string _value) where T : Data
         {
 
             if (ResourceManager.dicPixel.ContainsKey(_value))
