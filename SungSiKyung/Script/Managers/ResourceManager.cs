@@ -39,9 +39,8 @@ namespace SungSiKyung.Script.Managers
         public static int[,] Load(string _value)
         {
 
-            if (ResourceManager.dicPixel.ContainsKey(_value))
+            if (dicPixel.ContainsKey(_value))
                 return dicPixel[_value].inputPixel;
-
             else
                 return null;
         }
