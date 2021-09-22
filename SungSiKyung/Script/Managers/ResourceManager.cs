@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SungSiKyung.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -14,21 +15,6 @@ namespace SungSiKyung.Script.Managers
 
         }
 
-        public class Data
-        {
-
-        }
-
-        public class Image : Data
-        {
-
-            public int[,] inputPixel;
-
-            public Image(int[,] inputPixel)
-            {
-                this.inputPixel = inputPixel;
-            }
-        }
 
         public class Pixel
         {
@@ -45,8 +31,15 @@ namespace SungSiKyung.Script.Managers
             {"idle1", new Image(pixel1) },
             {"idle2", new Image(pixel2) }
         };
-
-        public static int[,] Load<T>(string _value) where T : Data
+        public void something(int a)
+        {
+            //Do somethong
+        }
+        public void something(string a)
+        {
+            Load<Image>("idle1");
+        }
+        public static T Load<T>(string _value) where T : Data.Data
         {
 
             if (ResourceManager.dicPixel.ContainsKey(_value))

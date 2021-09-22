@@ -15,6 +15,12 @@ namespace SungSiKyung.Script.Utils
             Game,
             Ending,
         }
-
+        public enum Player_MoveState 
+        {
+            Idle,
+            Move,
+            Jump,
+        }
+         
     }
 }
