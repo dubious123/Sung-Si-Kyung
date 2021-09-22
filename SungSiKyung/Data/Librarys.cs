@@ -12,22 +12,22 @@ namespace SungSiKyung.Data
         static Librarys()
         {
             _librarySet = new HashSet<BaseLibrary>();
-            _librarySet.Add(new ImageLibrary());
-            
+            _librarySet.Add(new ImageLibrary());         
         }
-        public static Dictionary<string, Data> dicTotal = new Dictionary<string, Data>()
+
+        public static T Find<T>(string id) where T : Data
         {
+            Data book;
+            foreach(BaseLibrary library in _librarySet)
+            {
+                book = library.FindBook(id);
+                if(book != null) { return book as T; }
+            }
+            return null;
 
-            {"idle1", ImageLibrary.GetImage("idle1") },
-            {"idle2", new Image(ImageLibrary.pixel2) }
-        };
-
-        public static T Load<T>(string id) where T : Data
-        {
-
-            if (dicTotal[id] is Image) { return ImageLibrary.GetImage(id).load() as T; }
-            else
-                return default;
+            //if (dicTotal[id] is Image) { return ImageLibrary.GetImage(id).load() as T; }
+            //else
+            //    return default;
 
         }
     }

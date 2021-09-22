@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace SungSiKyung.Data
 {
-    public class Data
+    public abstract class Data
     {
+        public int[,] inputPixel;
+        public abstract Data load();
     }
 }

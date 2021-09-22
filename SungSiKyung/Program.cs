@@ -1,4 +1,5 @@
-﻿using SungSiKyung.Script.Managers;
+﻿using SungSiKyung.Data;
+using SungSiKyung.Script.Managers;
 using SungSiKyung.Script.Utils;
 using System;
 using System.Collections.Generic;

@@ -9,11 +9,17 @@ namespace SungSiKyung.Data
     public class Image : Data
     {
 
-        public int[,] inputPixel;
+
+        
 
         public Image(int[,] inputPixel)
         {
             this.inputPixel = inputPixel;
+        }
+
+        public override Data load()
+        {
+            return (Data)this;
         }
     }
 }

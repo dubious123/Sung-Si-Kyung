@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SungSiKyung.Data
 {
-    class BaseLibrary
+    public abstract class BaseLibrary
     {
+        public abstract Data FindBook(string id);
     }
 }

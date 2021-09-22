@@ -9,6 +9,7 @@ namespace SungSiKyung.Data
 {
     public class _Transform
     {
-        public Vector2 Position = new Vector2(0,0);
+        public Vector2 Position = new Vector2(0, 0);
+        
     }
 }
