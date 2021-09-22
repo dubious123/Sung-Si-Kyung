@@ -8,5 +8,6 @@ namespace SungSiKyung.Interfaces
 {
     public interface IUseGravity
     {
+
     }
 }

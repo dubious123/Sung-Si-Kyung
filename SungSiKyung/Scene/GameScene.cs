@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace SungSiKyung.Scene
 {
     public class GameScene : BaseScene
     {
-
+      
     }
+
 }
