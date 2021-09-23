@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using SungSiKyung.Data;
 using SungSiKyung.Script.Utils;
+using SungSiKyung.Script.Content;
 
 namespace SungSiKyung.Script.Managers
 {
@@ -14,44 +15,63 @@ namespace SungSiKyung.Script.Managers
     {
         //    [DllImport("")]
         //    static extern IntPtr GetConsoleWindow();
-        StringBuilder _builder;
+        public char[][] ScreenBuilder { get { return _builder; } }
+        char[][] _builder;
+        StringBuilder _sb;
         public void Init()
         {
             //Test
+            _sb = new StringBuilder();
             Console.CursorVisible = false;
-            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight*2);
-            _builder = new StringBuilder();
-            
+            Console.SetWindowSize(Console.LargestWindowWidth/2, (int)(Console.LargestWindowHeight * 0.8));
+            Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            _builder = new char[Console.WindowHeight][];
+            for (int i = 0 ; i< Console.WindowHeight; i++)
+            {
+                _builder[i] = new char[Console.LargestWindowWidth / 2];
+                for (int j = 0;j<Console.WindowWidth;j++)
+                {
+                    _builder[i][j] = ' ';
+                }
+            }
         }
         void ClearConsole()
         {
-            Console.Clear();
+            _sb.Clear();
+            Console.SetCursorPosition(0, 0);
+            for (int i = 0; i < Console.WindowHeight; i++)
+            {
+                _builder[i] = new char[Console.LargestWindowWidth / 2];
+                for (int j = 0; j < Console.WindowWidth; j++)
+                {
+                    _builder[i][j] = ' ';
+                }
+            }
         }
         public void RenderScene()
         {
             ClearConsole();
             RenderDynamic();
-            FasterConsole.Flush();
+            RenderStatic();
+            for (int y = 0; y<_builder.GetLength(0) -1;y++)
+            {
+                _sb.AppendLine(new string(_builder[y]));
+            }
+            _sb.Append(new string(_builder[Console.WindowHeight-1]));
+            Console.Write(_sb);
         }
         void RenderDynamic()
         {
-            foreach (GameObject go in Managers.SceneMgr.CurrentScene.unitSet)
+            foreach (BaseUnit unit in Managers.SceneMgr.CurrentScene.unitSet)
             {
-                //Todo
-                //foreach(Vector2 delta in go.image){print}
-                Console.SetCursorPosition((int)go.Transform.Position.x,(int)go.Transform.Position.y);
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-                FasterConsole.WriteLine("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-
+                unit.PrintUnit();
+            }
+        }
+        void RenderStatic()
+        {
+            foreach (GameObject_Static static_go in Managers.SceneMgr.CurrentScene.staticSet)
+            {
+                static_go.PrintStatic();
             }
         }
     }

@@ -20,11 +20,10 @@ namespace SungSiKyung.Script.Managers
             _currentScene = new GameScene();
             _sceneBuffer.Add(_currentScene);
         }
-        public BaseScene SwitchScene(Define.SceneType type)
+        public void SwitchScene(Define.SceneType type)
         {
             //Todo
-            if(_currentScene?.Type == type) { return _currentScene; }
-            return _currentScene;
+            _currentScene.StartScene();
         }
     }
 }

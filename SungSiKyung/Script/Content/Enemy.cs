@@ -6,7 +6,7 @@ using SungSiKyung.Interfaces;
 
 namespace SungSiKyung.Script.Content
 {
-    public class Enemy : GameObject, IUseGravity
+    public class Enemy : BaseUnit, IUseGravity
     {
         public string enemyName;
         public int MaxHp;
