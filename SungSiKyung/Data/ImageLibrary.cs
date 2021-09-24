@@ -13,7 +13,7 @@ namespace SungSiKyung.Data
             {1,0,1,0,1},{1,0,1,0,1},{0,0,1,0,0},{0,1,0,1,0},{1,0,0,0,1},{1,0,0,0,1} };
         public static int[,] idle2 = {{0,0,0,0,0},{0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,0,1,0,0},
             { 0,1,1,1,0},{ 1,0,1,0,1},{ 1,0,1,0,1},{ 0,1,0,1,0},{ 1,0,0,0,1},{ 1,0,0,0,1}};
-        Dictionary<string, Image> _imageDict = new Dictionary<string, Image>();
+        public static Dictionary<string, Image> _imageDict = new Dictionary<string, Image>();
 
         public ImageLibrary()
         {
