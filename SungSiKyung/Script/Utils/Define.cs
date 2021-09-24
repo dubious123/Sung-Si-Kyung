@@ -9,6 +9,8 @@ namespace SungSiKyung.Script.Utils
     public class Define
     {
         public const int FRAME = 30;
+        public const int ConsoleHeight = 63;
+        public const int ConsoleWidth = 224; // 126/9*32
         public enum SceneType 
         { 
             MainMenu,
