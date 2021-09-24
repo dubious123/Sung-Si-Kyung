@@ -14,8 +14,8 @@ namespace SungSiKyung.Data
 
         public UnitLibrary()
         {
-            _unitDict.Add("map1", new Unit(unit1));
-            _unitDict.Add("map2", new Unit(unit2));
+            _unitDict.Add("unit1", new Unit(unit1));
+            _unitDict.Add("unit2", new Unit(unit2));
         }
 
 
