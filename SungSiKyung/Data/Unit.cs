@@ -4,13 +4,13 @@ using System.Text;
 
 namespace SungSiKyung.Data
 {
-    class Map : Data
+    class Unit : Data
     {
-        public int[,] mapimage;
+        public int[,] unitimage;
 
-        public Map(int[,] mapimage)
+        public Unit(int[,] unitimage)
         {
-            this.mapimage = mapimage;
+            this.unitimage = unitimage;
         }
 
         public override Data load()

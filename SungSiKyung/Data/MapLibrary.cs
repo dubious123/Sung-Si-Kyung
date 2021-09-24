@@ -10,7 +10,7 @@ namespace SungSiKyung.Data
             {1,0,1,0,1},{1,0,1,0,1},{0,0,1,0,0},{0,1,0,1,0},{1,0,0,0,1},{1,0,0,0,1} };
         public static int[,] map2 = {{0,0,0,0,0},{0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,0,1,0,0},
             { 0,1,1,1,0},{ 1,0,1,0,1},{ 1,0,1,0,1},{ 0,1,0,1,0},{ 1,0,0,0,1},{ 1,0,0,0,1}};
-        Dictionary<string, Map> _mapDict = new Dictionary<string, Map>();
+        public static Dictionary<string, Map> _mapDict = new Dictionary<string, Map>();
 
         public MapLibrary()
         {
