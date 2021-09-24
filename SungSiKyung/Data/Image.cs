@@ -10,7 +10,7 @@ namespace SungSiKyung.Data
     {
 
 
-        
+        public int[,] inputPixel;
 
         public Image(int[,] inputPixel)
         {

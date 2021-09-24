@@ -8,7 +8,7 @@ namespace SungSiKyung.Data
 {
     public abstract class Data
     {
-        public int[,] inputPixel;
+
         public abstract Data load();
     }
 }
