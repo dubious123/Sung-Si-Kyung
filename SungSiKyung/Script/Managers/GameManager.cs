@@ -1,4 +1,5 @@
-﻿using SungSiKyung.Scene;
+﻿using SungSiKyung.Components;
+using SungSiKyung.Scene;
 using SungSiKyung.Script.Content;
 using SungSiKyung.Script.Utils;
 using System;
@@ -47,7 +48,6 @@ namespace SungSiKyung.Script.Managers
             Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
             CreatePlayer();
             CreateEnemy();
-            Managers.SceneMgr.CurrentScene.AddUnit(_player);
             while (true)
             {
                 Managers.InputMgr.GetInput();

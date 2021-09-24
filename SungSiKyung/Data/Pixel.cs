@@ -1,4 +1,6 @@
-﻿using SungSiKyung.Script.Utils;
+﻿using SungSiKyung.Components;
+using SungSiKyung.Script.Managers;
+using SungSiKyung.Script.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,22 +12,21 @@ namespace SungSiKyung.Data
 {
     public class Pixel 
     {
-        public Pixel(Vector2Int placement,Char shape,ConsoleColor color)
+        public Pixel(Vector2Int displacement, char shape,ConsoleColor color = ConsoleColor.White)
         {
-            Displacement = placement;
+            Displacement = displacement;
             Shape = shape;
             Color = color;
+        }
+        public void Print(Vector2Int center,GameObject go = null)
+        {
+            int y = Displacement.y + center.y;
+            int x = Displacement.x + center.x;
+            Managers.RenderMgr.ScreenBuilder[y][x] = Shape;
+            go?.GetComponent<Collider>()?.ColliderOffsets?.Add(Displacement);
         }
         public Vector2Int Displacement { get; set; }
         public char Shape { get; set; }
         public ConsoleColor Color { get; set; }
-
-        public object Current => throw new NotImplementedException();
-
-        public IEnumerator<float> _TextCoroutine()
-        {
-            yield return 0f;
-            yield break;
-        }
     }
 }

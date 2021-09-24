@@ -23,10 +23,11 @@ namespace SungSiKyung.Script.Managers
         public void GetInput()
         {
 
-            ConsoleKeyInfo Input;
-            Input = Console.ReadKey();
+
             if (Console.KeyAvailable == true)
             {
+                ConsoleKeyInfo Input;
+                Input = Console.ReadKey();
                 if (Input.Key == ConsoleKey.UpArrow)
                     Managers.GameMgr.CurrentPlayer.Velocity.y += Managers.TimingMgr.DeltaTime;
                 if (Input.Key == ConsoleKey.DownArrow)
