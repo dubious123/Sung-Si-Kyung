@@ -14,17 +14,10 @@ namespace SungSiKyung.Data
         List<Pixel> _pixels;
         public List<Pixel> Pixels { get { return _pixels; } }
 
-<<<<<<< HEAD
-
         public int[,] inputPixel;
-
-        public Image(int[,] inputPixel)
-=======
         public Image(List<Pixel> pixelList, GameObject go = null)
->>>>>>> 1a09cfb49b26ec53cc7e2982701a1a7233896536
         {
             _pixels = new List<Pixel>();
-            _pixels = pixelList;
         }
         //Test
         public Image(int[,] arr)

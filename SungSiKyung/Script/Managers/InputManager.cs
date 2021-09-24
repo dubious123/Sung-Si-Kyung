@@ -29,14 +29,14 @@ namespace SungSiKyung.Script.Managers
                 ConsoleKeyInfo Input;
                 Input = Console.ReadKey();
                 if (Input.Key == ConsoleKey.UpArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.y += Managers.TimingMgr.DeltaTime;
+                    Managers.GameMgr.CurrentPlayer.Velocity.y -= Managers.TimingMgr.DeltaTime * 20;
                 if (Input.Key == ConsoleKey.DownArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.y -= Managers.TimingMgr.DeltaTime;
+                    Managers.GameMgr.CurrentPlayer.Velocity.y += Managers.TimingMgr.DeltaTime * 20;
                 if (Input.Key == ConsoleKey.LeftArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.x += Managers.TimingMgr.DeltaTime;
+                    Managers.GameMgr.CurrentPlayer.Velocity.x -= Managers.TimingMgr.DeltaTime * 20;
                     Controller.PlayerController.UpdatePlayerStateOfMove();
                 if (Input.Key == ConsoleKey.RightArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.x -= Managers.TimingMgr.DeltaTime;
+                    Managers.GameMgr.CurrentPlayer.Velocity.x += Managers.TimingMgr.DeltaTime * 20;
                     Controller.PlayerController.UpdatePlayerStateOfMove();
                 if (Input.Key == ConsoleKey.X)
                 {

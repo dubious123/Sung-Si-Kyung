@@ -45,15 +45,16 @@ namespace SungSiKyung.Script.Managers
         }
         public void StartGame()
         {
-            Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
             CreatePlayer();
             CreateEnemy();
+            Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
+
             while (true)
             {
                 Managers.InputMgr.GetInput();
+                Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
                 if (Managers.TimingMgr.FrameControl())
                 {
-                    Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
                     Managers.RenderMgr.RenderScene();
                 }
             }
