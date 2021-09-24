@@ -10,17 +10,18 @@ namespace SungSiKyung.Data
             {1,0,1,0,1},{1,0,1,0,1},{0,0,1,0,0},{0,1,0,1,0},{1,0,0,0,1},{1,0,0,0,1} };
         public static int[,] map2 = {{0,0,0,0,0},{0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,0,1,0,0},
             { 0,1,1,1,0},{ 1,0,1,0,1},{ 1,0,1,0,1},{ 0,1,0,1,0},{ 1,0,0,0,1},{ 1,0,0,0,1}};
+        Dictionary<string, Image> _mapDict = new Dictionary<string, Image>();
 
         public MapLibrary()
         {
-            ImageLibrary._imageDict.Add("map1", new Image(map1));
-            ImageLibrary._imageDict.Add("map2", new Image(map2));
+            _mapDict.Add("map1", new Map(map1));
+            _mapDict.Add("map2", new Map(map2));
         }
 
 
         public override Data FindBook(string id)
         {
-            if (ImageLibrary._imageDict.ContainsKey(id)) { return ImageLibrary._imageDict[id]; }
+            if (_mapDict.ContainsKey(id)) { return _mapDict[id]; }
             else { return null; }
         }
     }
