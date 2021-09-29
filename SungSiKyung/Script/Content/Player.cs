@@ -34,7 +34,8 @@ namespace SungSiKyung.Script.Content
         public Player()
         {
             AddComponent(new Collider(this,0.8f));
-            
+
+            Transform.Position = new Vector2(10, 20);
             Transform.Right = 4;
             Transform.Up = 4;
             Transform.Left = 4;

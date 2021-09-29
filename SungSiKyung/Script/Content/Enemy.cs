@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SungSiKyung.Components;
 using SungSiKyung.Data;
 using SungSiKyung.Interfaces;
+using SungSiKyung.Script.Utils;
 
 namespace SungSiKyung.Script.Content
 {
@@ -20,7 +22,19 @@ namespace SungSiKyung.Script.Content
             NowHp = _maxHp;
             AtkDamage = _atkDamage;
         }
-        
+
+        public Enemy()
+        {
+            AddComponent(new Collider(this, 0.8f));
+
+            Transform.Position = new Vector2(30, 20);
+            Transform.Right = 4;
+            Transform.Up = 4;
+            Transform.Left = 4;
+            Transform.Down = 4;
+            RenderingData = Librarys.Find<Image>("idle2");
+        }
+
         /*public void EnemyisAttacked()
         {
             if (_Player.Attacked)
