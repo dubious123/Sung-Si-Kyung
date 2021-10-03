@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SungSiKyung.Components;
 using SungSiKyung.Data;
 using SungSiKyung.Script.Content;
 
 namespace SungSiKyung.Script.Rendering
 {
-    public class Animator
+    public class Animator : BaseComponent
     {
+        string id = "Animator";
         string Name;
         int _currentTick;
         int ImgCount = 0; // 이미지 개수
@@ -52,6 +54,16 @@ namespace SungSiKyung.Script.Rendering
                 _currentTick = Environment.TickCount;
             }
             return RenderingData;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj.GetHashCode() == GetHashCode();
+        }
+
+        public override int GetHashCode()
+        {
+            return id.GetHashCode();
         }
     }
 }
