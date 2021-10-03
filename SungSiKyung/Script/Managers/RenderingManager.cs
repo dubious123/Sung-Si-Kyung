@@ -16,7 +16,7 @@ namespace SungSiKyung.Script.Managers
         //    [DllImport("")]
         //    static extern IntPtr GetConsoleWindow();
         public char[][] ScreenBuilder { get { return _builder; } }
-        char[][] _builder;
+        char[][] _builder; 
         StringBuilder _sb;
         int _builderWidthLength;
         int _builderHeightLength;
