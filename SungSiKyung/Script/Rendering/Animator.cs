@@ -6,12 +6,15 @@ using SungSiKyung.Script.Content;
 
 namespace SungSiKyung.Script.Rendering
 {
-    public class Animator : BaseUnit
+    public class Animator
     {
         string Name;
         int _currentTick;
         int ImgCount = 0; // 이미지 개수
         int n = 0;
+
+        RenderData RenderingData;
+        List<RenderData> RenderingDatas = new List<RenderData>();
 
         public Animator(string name) // 인자 있음!
         {
