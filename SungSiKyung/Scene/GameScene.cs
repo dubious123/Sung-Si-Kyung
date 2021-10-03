@@ -18,7 +18,9 @@ namespace SungSiKyung.Scene
             AddGameObject(Managers.GameMgr.CurrentPlayer);
 
             SetInputMap();
-
+            base.StartScene();
+            AddGameObject(Managers.GameMgr.CurrentPlayer);
+            AddGameObject(Managers.GameMgr.Currentenemy);
             GameObject_Static floor = new GameObject_Static();
             Collider floorCollider = new Collider(floor, 0.8f);
             floor.AddComponent(floorCollider);

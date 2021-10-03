@@ -9,7 +9,7 @@ namespace SungSiKyung.Data
 {
     public class _Transform
     {
-        public Vector2 Position = new Vector2(10, 10);
+        public Vector2 Position = new Vector2(10, 20);
         public int[] Size = new int[4];
         public int Right { get { return Size[0]; } set { Size[0] = value; } }
         public int Up { get { return Size[1]; } set { Size[1] = value; } }

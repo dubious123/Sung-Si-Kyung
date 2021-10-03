@@ -12,6 +12,7 @@ namespace SungSiKyung.Data
     {
         public _Transform Transform = new _Transform();
         public Vector2 Velocity = new Vector2(0,0);
+        //public List<RenderData> RenderingDatas = new List<RenderData>();
         public RenderData RenderingData;
         HashSet<BaseComponent> Components = new HashSet<BaseComponent>(); 
         public void AddComponent(BaseComponent component)

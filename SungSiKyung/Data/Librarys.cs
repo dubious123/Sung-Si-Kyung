@@ -12,7 +12,9 @@ namespace SungSiKyung.Data
         static Librarys()
         {
             _librarySet = new HashSet<BaseLibrary>();
-            _librarySet.Add(new ImageLibrary());         
+            _librarySet.Add(new ImageLibrary());
+            _librarySet.Add(new MapLibrary());
+            _librarySet.Add(new UnitLibrary());
         }
 
         public static T Find<T>(string id) where T : Data
