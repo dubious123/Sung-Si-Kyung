@@ -22,61 +22,7 @@ namespace SungSiKyung.Script.Managers
 
         public void GetInput()
         {
-
-
-            if (Console.KeyAvailable == true)
-            {
-                ConsoleKeyInfo Input;
-                Input = Console.ReadKey();
-                if (Input.Key == ConsoleKey.UpArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.y -= Managers.TimingMgr.DeltaTime * 20;
-                if (Input.Key == ConsoleKey.DownArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.y += Managers.TimingMgr.DeltaTime * 20;
-                if (Input.Key == ConsoleKey.LeftArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.x -= Managers.TimingMgr.DeltaTime * 20;
-                    Controller.PlayerController.UpdatePlayerStateOfMove();
-                if (Input.Key == ConsoleKey.RightArrow)
-                    Managers.GameMgr.CurrentPlayer.Velocity.x += Managers.TimingMgr.DeltaTime * 20;
-                    Controller.PlayerController.UpdatePlayerStateOfMove();
-                if (Input.Key == ConsoleKey.X)
-                {
-                    Attack();
-                }
-            }
-            PlayerController.UpdatePlayerState();
-
-            void Attack() 
-            {
-                if (Managers.GameMgr.CurrentPlayer.Attacked)
-                {
-                    Managers.GameMgr.Currentenemy.NowHp -= Managers.GameMgr.CurrentPlayer.AttackDamage;
-                    Managers.GameMgr.CurrentPlayer.Attacked = false;
-                    if (Managers.GameMgr.Currentenemy.NowHp <= 0)
-                    {
-                        //Enemy 객체 파괴
-                    }
-                }
-            }
-
-
-            /*switch (Console.ReadKey().Key)
-            {
-                case ConsoleKey.UpArrow:
-                    Managers.GameMgr.CurrentPlayer.Velocity.y += Managers.TimingMgr.DeltaTime;
-                    break;
-                case ConsoleKey.DownArrow:
-                    Managers.GameMgr.CurrentPlayer.Velocity.y -= Managers.TimingMgr.DeltaTime;
-                    break;
-                case ConsoleKey.LeftArrow:
-                    Managers.GameMgr.CurrentPlayer.Velocity.x += Managers.TimingMgr.DeltaTime;
-                    break;
-                case ConsoleKey.RightArrow:
-                    Managers.GameMgr.CurrentPlayer.Velocity.x -= Managers.TimingMgr.DeltaTime;
-                    break;
-                case ConsoleKey.X:
-            }
-            */
-
+            Managers.SceneMgr.CurrentScene.InputMap.GetInput();
         }
     }
 }

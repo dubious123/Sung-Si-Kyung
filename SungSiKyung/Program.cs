@@ -12,6 +12,14 @@ namespace SungSiKyung
         static void Main(string[] args)
         {
             Managers.GameMgr.StartGame();
+            //try
+            //{
+            //    Managers.GameMgr.StartGame();
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    return;   
+            //}
         }
     }
 }

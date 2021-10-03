@@ -47,7 +47,7 @@ namespace SungSiKyung.Script.Managers
         {
             CreatePlayer();
             CreateEnemy();
-            Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
+            Managers.SceneMgr.SwitchScene(Define.SceneType.MainMenu);
 
             while (true)
             {

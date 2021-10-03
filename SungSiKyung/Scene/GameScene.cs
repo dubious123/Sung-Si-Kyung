@@ -13,10 +13,12 @@ namespace SungSiKyung.Scene
 {
     public class GameScene : BaseScene
     {
-        public override void StartScene()
+        public GameScene()
         {
-            base.StartScene();
-            AddUnit(Managers.GameMgr.CurrentPlayer);
+            AddGameObject(Managers.GameMgr.CurrentPlayer);
+
+            SetInputMap();
+
             GameObject_Static floor = new GameObject_Static();
             Collider floorCollider = new Collider(floor, 0.8f);
             floor.AddComponent(floorCollider);
@@ -25,10 +27,15 @@ namespace SungSiKyung.Scene
             floor.Transform.Left = 25;
             floor.Transform.Right = 25;
             floor.Transform.Position = new Vector2Int(25, 50);
-            
+
             floor.RenderingData = new Image(new int[1, 50] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } });
-            staticSet.Add(floor);
+            AddGameObject(floor);
             Managers.PhysicMgr.StaticColliderDict.Add(new Vector2Int(25, 50), floorCollider);
+        }
+        public override void SetInputMap()
+        {
+            base.SetInputMap();
+
         }
     }
 
