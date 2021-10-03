@@ -12,15 +12,21 @@ namespace SungSiKyung.Scene
 {
     public class BaseScene
     {
+        public string BackgroundMusic;
         public Define.SceneType Type;
         public HashSet<GameObject> unitSet = new HashSet<GameObject>();
         public HashSet<GameObject_Static> staticSet = new HashSet<GameObject_Static>();
+        public BaseScene()
+        {
+            BackgroundMusic = "180";
+        }
         public void AddUnit<T>(T unit) where T : GameObject
         {
             unitSet.Add(unit);
         }
         public virtual void StartScene()
         {
+            Managers.SoundMgr.PlayBackground(BackgroundMusic);
             Managers.PhysicMgr.StaticColliderDict = new Dictionary<Vector2Int, Collider>();
             foreach (GameObject_Static go in staticSet)
             {
