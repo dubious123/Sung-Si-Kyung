@@ -20,7 +20,6 @@ namespace SungSiKyung.Data
             foreach(char c in TextData)
             {
                 Managers.RenderMgr.ScreenBuilder[y][x++] = c;
-
             }
         }
         public override Data load()

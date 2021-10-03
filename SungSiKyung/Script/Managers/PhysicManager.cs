@@ -25,7 +25,7 @@ namespace SungSiKyung.Script.Managers
         public void ApplyPhysic(BaseScene scene)
         {
             DynamicColliderDict = new Dictionary<Vector2, Collider>();
-            foreach (GameObject unit in scene.unitSet)
+            foreach (GameObject unit in scene.DynamicSet)
             {
                 if(unit is IUseGravity) { ApplyGravity(unit); }
                 CaculateCollides(unit);

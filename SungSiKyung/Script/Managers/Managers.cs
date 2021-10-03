@@ -18,6 +18,7 @@ namespace SungSiKyung.Script.Managers
             } 
         }
 
+        CursorManager _curosrMgr = new CursorManager();
         DataManager _dataMgr = new DataManager();
         SceneManager _sceneMgr = new SceneManager();
         GameManager _gameMgr = new GameManager();
@@ -28,6 +29,7 @@ namespace SungSiKyung.Script.Managers
         SoundManager _soundMgr = new SoundManager();
         TimingManager _timingMgr = new TimingManager();
 
+        public static CursorManager CursorMgr { get { return Instance._curosrMgr; } }
         public static DataManager DataMgr { get { return Instance._dataMgr; } }
         public static SceneManager SceneMgr { get { return Instance._sceneMgr; } }
         public static GameManager GameMgr { get { return Instance._gameMgr; } }
@@ -40,6 +42,7 @@ namespace SungSiKyung.Script.Managers
         static void Init()
         {
             _instance = new Managers();
+            _instance._curosrMgr.Init();
             _instance._dataMgr.Init();
             _instance._sceneMgr.Init();
             _instance._gameMgr.Init();

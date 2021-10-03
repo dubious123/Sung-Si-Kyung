@@ -80,7 +80,7 @@ namespace SungSiKyung.Script.Managers
         public void RenderScene()
         {
             ClearConsole();
-            RenderBG();
+            //RenderBG();
             RenderDynamic();
             RenderStatic();
             for (int y = 0; y < _builder.GetLength(0) - 1; y++)
@@ -92,7 +92,7 @@ namespace SungSiKyung.Script.Managers
         }
         void RenderDynamic()
         {
-            foreach (BaseUnit unit in Managers.SceneMgr.CurrentScene.unitSet)
+            foreach (BaseUnit unit in Managers.SceneMgr.CurrentScene.DynamicSet)
             {
                 //unit.PrintUnit();
                 unit.Update();
@@ -100,7 +100,7 @@ namespace SungSiKyung.Script.Managers
         }
         void RenderStatic()
         {
-            foreach (GameObject_Static static_go in Managers.SceneMgr.CurrentScene.staticSet)
+            foreach (GameObject_Static static_go in Managers.SceneMgr.CurrentScene.StaticSet)
             {
                 static_go.PrintStatic();
             }
