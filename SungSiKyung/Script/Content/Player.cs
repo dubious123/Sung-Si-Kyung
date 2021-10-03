@@ -2,6 +2,7 @@
 using SungSiKyung.Data;
 using SungSiKyung.Interfaces;
 using SungSiKyung.Script.Utils;
+using SungSiKyung.Script.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace SungSiKyung.Script.Content
 {
     public class Player : BaseUnit, IUseGravity
     {
+        Animator animator;
         private Define.Player_MoveState _current_Player_MoveState;
         public Define.Player_MoveState Current_Player_MoveState
         {
@@ -40,7 +42,12 @@ namespace SungSiKyung.Script.Content
             Transform.Up = 4;
             Transform.Left = 4;
             Transform.Down = 4;
-            RenderingData = Librarys.Find<Image>("idle1");
+            animator = new Animator("Player");
+        }
+        public override void Update()
+        {
+            RenderingData = animator.ChangeImage();
+            PrintUnit();
         }
 
         void AttackTrue() { Attacked = true;}

@@ -94,7 +94,8 @@ namespace SungSiKyung.Script.Managers
         {
             foreach (BaseUnit unit in Managers.SceneMgr.CurrentScene.unitSet)
             {
-                unit.PrintUnit();
+                //unit.PrintUnit();
+                unit.Update();
             }
         }
         void RenderStatic()

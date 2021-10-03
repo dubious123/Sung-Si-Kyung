@@ -13,5 +13,9 @@ namespace SungSiKyung.Script.Content
             Vector2Int pos = new Vector2Int((int)Transform.Position.x, (int)Transform.Position.y);
             (RenderingData as Image).PrintImage(pos,this);
         }
+        public virtual void Update()
+        {
+
+        }
     }
 }
