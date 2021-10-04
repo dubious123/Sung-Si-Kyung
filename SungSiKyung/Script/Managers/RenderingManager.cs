@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using SungSiKyung.Data;
 using SungSiKyung.Script.Utils;
 using SungSiKyung.Script.Content;
+using SungSiKyung.Script.Rendering;
 
 namespace SungSiKyung.Script.Managers
 {
@@ -61,8 +62,6 @@ namespace SungSiKyung.Script.Managers
                     Console.SetCursorPosition(0, 0);
                 }
             }
-           
-            
         }
         void ClearConsole()
         {
@@ -80,6 +79,7 @@ namespace SungSiKyung.Script.Managers
         public void RenderScene()
         {
             ClearConsole();
+            Animator.ApplyAnimator(Managers.SceneMgr.CurrentScene);
             //RenderBG();
             RenderDynamic();
             RenderStatic();
@@ -94,8 +94,7 @@ namespace SungSiKyung.Script.Managers
         {
             foreach (BaseUnit unit in Managers.SceneMgr.CurrentScene.DynamicSet)
             {
-                //unit.PrintUnit();
-                unit.Update();
+                unit.PrintUnit();
             }
         }
         void RenderStatic()
@@ -121,5 +120,7 @@ namespace SungSiKyung.Script.Managers
             _sb.Append(new string(_builder[Console.WindowHeight - 1]));
             Console.Write(_sb);
         }
+
+
     }
 }

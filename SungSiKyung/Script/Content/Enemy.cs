@@ -11,7 +11,6 @@ namespace SungSiKyung.Script.Content
 {
     public class Enemy : BaseUnit, IUseGravity
     {
-        Animator animator;
         public string enemyName;
         public int MaxHp;
         public int NowHp;
@@ -28,30 +27,14 @@ namespace SungSiKyung.Script.Content
         public Enemy()
         {
             AddComponent(new Collider(this, 0.8f));
-            AddComponent(new Animator("Player"));
+            AddComponent(new Animator(this, "Enemy"));
 
             Transform.Position = new Vector2(30, 20);
             Transform.Right = 4;
             Transform.Up = 4;
             Transform.Left = 4;
             Transform.Down = 4;
-            animator = new Animator("Player");
         }
-        public override void Update()
-        {
-            RenderingData = animator.ChangeImage();
-            PrintUnit();
-        }
-
-        /*public void EnemyisAttacked()
-        {
-            if (_Player.Attacked)
-            {
-                NowHp -= _Player.AttackDamage;
-                _Player.Attacked = false;
-
-            }
-        }*/
 
 
 

@@ -13,7 +13,6 @@ namespace SungSiKyung.Script.Content
 {
     public class Player : BaseUnit, IUseGravity
     {
-        Animator animator;
         private Define.Player_MoveState _current_Player_MoveState;
         public Define.Player_MoveState Current_Player_MoveState
         {
@@ -36,19 +35,13 @@ namespace SungSiKyung.Script.Content
         public Player()
         {
             AddComponent(new Collider(this,0.8f));
-            AddComponent(new Animator("Player"));
+            AddComponent(new Animator(this, "Player"));
 
             Transform.Position = new Vector2(10, 20);
             Transform.Right = 4;
             Transform.Up = 4;
             Transform.Left = 4;
             Transform.Down = 4;
-            animator = new Animator("Player");
-        }
-        public override void Update()
-        {
-            RenderingData = animator.ChangeImage();
-            PrintUnit();
         }
 
         void AttackTrue() { Attacked = true;}
