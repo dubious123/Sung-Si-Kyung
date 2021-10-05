@@ -19,7 +19,7 @@ namespace SungSiKyung.Script.Managers
         public Dictionary<Vector2, Collider> DynamicColliderDict;
         public void Init()
         {
-            _gravity = 9.8f;
+            _gravity = 0.98f;
             StaticColliderDict = new Dictionary<Vector2Int, Collider>();
         }
         public void ApplyPhysic(BaseScene scene)

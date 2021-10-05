@@ -26,13 +26,9 @@ namespace SungSiKyung.Script.Managers
             //Test
             _sb = new StringBuilder();
             Console.CursorVisible = false;
-            Console.SetWindowSize(224, 63);
-            //Console.SetBufferSize(224, 63);
             SetWindowSize();
-
             _builderWidthLength = Console.WindowWidth;
             _builderHeightLength = Console.WindowHeight;
-
             _builder = new char[Console.WindowHeight][];
             for (int i = 0; i < Console.WindowHeight; i++)
             {
