@@ -17,10 +17,12 @@ namespace SungSiKyung.Script.Managers
         //    [DllImport("")]
         //    static extern IntPtr GetConsoleWindow();
         public char[][] ScreenBuilder { get { return _builder; } }
-        char[][] _builder; 
+        char[][] _builder;
         StringBuilder _sb;
         int _builderWidthLength;
         int _builderHeightLength;
+        RenderData BGdata;
+        Vector2Int BGpos;
         public void Init()
         {
             //Test
@@ -41,9 +43,12 @@ namespace SungSiKyung.Script.Managers
                 }
                 */
             }
+            BGdata = null;
+            BGpos = new Vector2Int(Define.ConsoleWidth / 2, Define.ConsoleHeight / 2);
         }
         void SetWindowSize()
         {
+            Console.SetWindowSize(64, 18);
             Console.SetBufferSize(Define.ConsoleWidth, Define.ConsoleHeight);
             while (true)
             {
@@ -75,8 +80,9 @@ namespace SungSiKyung.Script.Managers
         public void RenderScene()
         {
             ClearConsole();
+            RenderBG(Managers.SceneMgr.CurrentScene);
+            //RenderBuilder();
             Animator.ApplyAnimator(Managers.SceneMgr.CurrentScene);
-            //RenderBG();
             RenderDynamic();
             RenderStatic();
             for (int y = 0; y < _builder.GetLength(0) - 1; y++)
@@ -100,12 +106,27 @@ namespace SungSiKyung.Script.Managers
                 static_go.PrintStatic();
             }
         }
-        void RenderBG() //배경
+        void RenderBG(BaseScene scene) //배경
         {
-            RenderData RenderingData = Librarys.Find<Image>("BG1");
-            Vector2Int pos = new Vector2Int(Define.ConsoleWidth / 2, Define.ConsoleHeight / 2);
-            (RenderingData as Image).PrintImage(pos);
-            // 아직 출력만
+            switch (scene.Type)
+            {
+                case Define.SceneType.MainMenu:
+                    BGdata = null;
+                    break;
+                case Define.SceneType.Game:
+                    BGdata = Librarys.Find<Image>("BG1");
+                    break;
+                case Define.SceneType.Ending:
+                    BGdata = Librarys.Find<Image>("BG1");
+                    break;
+                default:
+                    BGdata = null;
+                    break;
+            }
+            if (BGdata != null)
+            {
+                (BGdata as Image).PrintImage(BGpos);
+            }
         }
         void RenderBuilder()
         {
