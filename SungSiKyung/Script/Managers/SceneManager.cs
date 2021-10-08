@@ -29,6 +29,7 @@ namespace SungSiKyung.Script.Managers
                 _currentScene = CreateScene(type);
                 _sceneBuffer.Add(type, _currentScene);
             }
+            _currentScene.Type = type;
             _currentScene.StartScene();
         }
         BaseScene CreateScene(Define.SceneType type)
