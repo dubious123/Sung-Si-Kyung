@@ -18,12 +18,11 @@ namespace SungSiKyung.Data
             Shape = shape;
             Color = color;
         }
-        public void Print(Vector2Int center,GameObject go = null)
+        public void Print(Vector2Int center)
         {
             int y = Displacement.y + center.y;
             int x = Displacement.x + center.x;
             Managers.RenderMgr.ScreenBuilder[y][x] = Shape;
-            go?.GetComponent<Collider>()?.ColliderOffsets?.Add(Displacement);
         }
         public Vector2Int Displacement { get; set; }
         public char Shape { get; set; }

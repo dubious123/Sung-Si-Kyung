@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SungSiKyung.Script.Controller;
 
 namespace SungSiKyung.Script.Content
 {
@@ -34,14 +35,11 @@ namespace SungSiKyung.Script.Content
         public bool Attacked = false;
         public Player()
         {
-            AddComponent(new Collider(this,0.8f));
-            AddComponent(new Animator(this, "Player"));
-
-            Transform.Position = new Vector2(10, 20);
-            Transform.Right = 4;
-            Transform.Up = 4;
-            Transform.Left = 4;
-            Transform.Down = 4;
+            Transform.Position = new Vector2(5, 5);
+            Transform.Boundary = new Box(-2, 2, -2, 2);
+            AddComponent(new Collider(this,1f));
+            AddComponent(new Animator(this, "Ball"));
+            AddComponent(new PlayerController(this));
         }
 
         void AttackTrue() { Attacked = true;}

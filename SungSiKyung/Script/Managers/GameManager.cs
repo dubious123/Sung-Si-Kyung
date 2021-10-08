@@ -52,11 +52,17 @@ namespace SungSiKyung.Script.Managers
             while (true)
             {
                 Managers.InputMgr.GetInput();
-                Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
+
                 if (Managers.TimingMgr.FrameControl())
                 {
+
                     Managers.RenderMgr.RenderScene();
+                    Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
+
+
                 }
+
+
             }
         }
     }

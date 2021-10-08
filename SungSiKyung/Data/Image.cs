@@ -58,18 +58,18 @@ namespace SungSiKyung.Data
                 }
             }
         }
-        public void PrintImage(Vector2Int center,GameObject go = null)
+        public void PrintImage(Vector2Int center)
         {
             foreach (Pixel pixel in _pixels)
             {
-                pixel.Print(center,go);
+                pixel.Print(center);
             }
         }
-        public void PrintImageWithCollider(Vector2Int center, GameObject go)
+        public void PrintImageWithCollider(Vector2Int center)
         {
             foreach (Pixel pixel in _pixels)
             {
-                pixel.Print(center,go);
+                pixel.Print(center);
             }
         }
         public override Data load()

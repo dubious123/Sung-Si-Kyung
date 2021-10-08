@@ -1,48 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SungSiKyung.Script.Managers;
-using SungSiKyung.Script.Utils;
+﻿using SungSiKyung.Components;
+using SungSiKyung.Data;
 
 namespace SungSiKyung.Script.Controller
 {
 
-    public class PlayerController
+    public class PlayerController : BaseComponent
     {
-        
-        public static void UpdatePlayerState()//idle_state에요
+        string id = "PlayerController";
+        public GameObject gameObject;
+        public float MaxVelocity_Up = 1;
+        public float MaxVelocity_Side = 1;
+        public PlayerController(GameObject go)
         {
-            Vector2 Player_Velocity = Managers.Managers.GameMgr.CurrentPlayer.Velocity;
-            if (Player_Velocity.Magnitude <= 0.01f)
-            {
-                Managers.Managers.GameMgr.CurrentPlayer.Current_Player_MoveState = Define.Player_MoveState.Idle;
-            }
+            gameObject = go;
+        }
+        public void MoveRight()
+        {
+            gameObject.Velocity.x += Managers.Managers.TimingMgr.DeltaTime * 5;
+        }
+        public void MoveLeft()
+        {
+            gameObject.Velocity.x -= Managers.Managers.TimingMgr.DeltaTime * 5;
+        }
+        public override bool Equals(object obj)
+        {
+            return obj.GetHashCode() == GetHashCode();
         }
 
-        public static void UpdatePlayerStateOfMove()//Player의 Game상에서의 Run state
+        public override int GetHashCode()
         {
-            Vector2 Player_Velocity = Managers.Managers.GameMgr.CurrentPlayer.Velocity;
-            if (Player_Velocity.x >= 0.01f && Player_Velocity.y <= 0.01f )
-            {
-                Managers.Managers.GameMgr.CurrentPlayer.Current_Player_MoveState = Define.Player_MoveState.Move;
-            }
+            return id.GetHashCode();
         }
-
-        public static void UpdatePlayerStateOfJump()//Player의 Game상에서의 Jump state
-        {
-            Vector2 Player_Velocity = Managers.Managers.GameMgr.CurrentPlayer.Velocity;
-            if (Player_Velocity.y >= 0.01f) 
-            {
-                Managers.Managers.GameMgr.CurrentPlayer.Current_Player_MoveState = Define.Player_MoveState.Jump;
-            }
-        }
-
-        public static void UpdatePlayerStateAttack() //Player의 Game상에서의 Attack state
-        {
-            bool Player_Attacking = Managers.Managers.GameMgr.CurrentPlayer.Attacked;
-        }
-    
     }
 }

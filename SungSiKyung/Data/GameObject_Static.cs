@@ -15,7 +15,7 @@ namespace SungSiKyung.Data
             if (RenderingData == null) { return; }
             if (RenderingData is Image)
             {
-                (RenderingData as Image).PrintImage(new Vector2Int((int)Transform.Position.x, (int)Transform.Position.y),this);
+                (RenderingData as Image).PrintImage(new Vector2Int((int)Transform.Position.x, (int)Transform.Position.y));
                 return;
             }
             if (RenderingData is Text)

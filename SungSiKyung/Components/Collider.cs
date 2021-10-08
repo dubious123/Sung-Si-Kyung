@@ -27,9 +27,10 @@ namespace SungSiKyung.Components
         public event Action<GameObject> CollisionEvent ;
         public Collider(GameObject go,float elastic)
         {
-            CollisionEvent += (GameObject go) => go.Velocity *= -ElasticModulus;
-            gameObject = go;
             ElasticModulus = elastic;
+            CollisionEvent += (GameObject go) => go.Velocity.y = go.Velocity.y > 0 ? (go.Velocity.y *= -ElasticModulus) : go.Velocity.y;
+            gameObject = go;
+            _colliderDots = go.Transform.Boundary.Bounds;
         }
         public void InvokeColliderEvent(GameObject go)
         {

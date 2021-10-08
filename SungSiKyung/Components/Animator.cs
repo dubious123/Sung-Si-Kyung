@@ -17,6 +17,7 @@ namespace SungSiKyung.Script.Rendering
 
         enum ImageDictKeys
         {
+            Ball1,
             Player_idle1,
             Player_idle2,
             Enemy_idle1,

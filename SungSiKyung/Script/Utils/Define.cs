@@ -11,6 +11,13 @@ namespace SungSiKyung.Script.Utils
         public const int FRAME = 60;
         public const int ConsoleHeight = 126;
         public const int ConsoleWidth = 448; // 126/9*32
+        public enum Dir
+        {
+            Up,
+            Right,
+            Down,
+            Left
+        }
         public enum SceneType 
         { 
             MainMenu,

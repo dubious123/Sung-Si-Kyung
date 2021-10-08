@@ -1,5 +1,6 @@
 ﻿using SungSiKyung.Components;
 using SungSiKyung.Data;
+using SungSiKyung.Script.Controller;
 using SungSiKyung.Script.Managers;
 using SungSiKyung.Script.Utils;
 using System;
@@ -15,29 +16,27 @@ namespace SungSiKyung.Scene
     {
         public GameScene()
         {
-            AddGameObject(Managers.GameMgr.CurrentPlayer);
-
             SetInputMap();
             base.StartScene();
-            AddGameObject(Managers.GameMgr.CurrentPlayer);
-            AddGameObject(Managers.GameMgr.Currentenemy);
-            GameObject_Static floor = new GameObject_Static();
-            Collider floorCollider = new Collider(floor, 0.8f);
-            floor.AddComponent(floorCollider);
-            floor.Transform.Up = 1;
-            floor.Transform.Down = 0;
-            floor.Transform.Left = 25;
-            floor.Transform.Right = 25;
-            floor.Transform.Position = new Vector2Int(25, 50);
 
-            floor.RenderingData = new Image(new int[1, 50] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } });
+            GameObject_Static floor = new GameObject_Static();
+            floor.Transform.Boundary = new Box(-25, 25, -1, 1);
+            floor.Transform.Position = new Vector2Int(50, 50);
+            Collider floorCollider = new Collider(floor, 1f);
+            floor.AddComponent(floorCollider);
+
+
+            floor.RenderingData = new Image(new int[2, 100] { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }, { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } });
             AddGameObject(floor);
-            Managers.PhysicMgr.StaticColliderDict.Add(new Vector2Int(25, 50), floorCollider);
+            Managers.PhysicMgr.StaticColliderDict.Add(new Vector2Int(26, 51), floorCollider);
+            AddGameObject(Managers.GameMgr.CurrentPlayer);
         }
         public override void SetInputMap()
         {
             base.SetInputMap();
-
+            PlayerController controller = Managers.GameMgr.CurrentPlayer.GetComponent<PlayerController>();
+            InputMap.GetAction("LeftArrow").AddListener("LeftArrow", () => controller.MoveLeft());
+            InputMap.GetAction("RightArrow").AddListener("RightArrow", () => controller.MoveRight());
         }
     }
 

@@ -11,7 +11,7 @@ namespace SungSiKyung.Script.Content
         public void PrintUnit()
         {
             Vector2Int pos = new Vector2Int((int)Transform.Position.x, (int)Transform.Position.y);
-            (RenderingData as Image).PrintImage(pos,this);
+            (RenderingData as Image).PrintImage(pos);
         }
     }
 }
