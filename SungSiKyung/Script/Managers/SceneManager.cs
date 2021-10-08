@@ -11,20 +11,40 @@ namespace SungSiKyung.Script.Managers
     public class SceneManager
     {
         public BaseScene CurrentScene { get { return _currentScene; } }
-        List<BaseScene> _sceneBuffer;
+        Dictionary<Define.SceneType,BaseScene> _sceneBuffer;
         BaseScene _currentScene;
         public void Init()
         {
             //Todo --> Data
-            _sceneBuffer = new List<BaseScene>();
-            _currentScene = new GameScene();
-            _sceneBuffer.Add(_currentScene);
+            _sceneBuffer = new Dictionary<Define.SceneType, BaseScene>();
+            _currentScene = new MainMenuScene();
+            _sceneBuffer.Add(_currentScene.Type, _currentScene);
         }
-        public BaseScene SwitchScene(Define.SceneType type)
+        public void SwitchScene(Define.SceneType type)
         {
             //Todo
-            if(_currentScene?.Type == type) { return _currentScene; }
-            return _currentScene;
+            if (_sceneBuffer.ContainsKey(type)) { _currentScene = _sceneBuffer[type]; }
+            else 
+            { 
+                _currentScene = CreateScene(type);
+                _sceneBuffer.Add(type, _currentScene);
+            }
+            _currentScene.Type = type;
+            _currentScene.StartScene();
+        }
+        BaseScene CreateScene(Define.SceneType type)
+        {
+            switch (type)
+            {
+                case Define.SceneType.MainMenu:
+                    return new MainMenuScene();
+                case Define.SceneType.Game:
+                    return new GameScene();
+                case Define.SceneType.Ending:
+                    return new Ending_PlayerDeadScene();
+                default:
+                    return null;
+            }
         }
     }
 }

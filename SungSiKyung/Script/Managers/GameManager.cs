@@ -1,4 +1,5 @@
-﻿using SungSiKyung.Scene;
+﻿using SungSiKyung.Components;
+using SungSiKyung.Scene;
 using SungSiKyung.Script.Content;
 using SungSiKyung.Script.Utils;
 using System;
@@ -11,6 +12,7 @@ namespace SungSiKyung.Script.Managers
 {
     public class GameManager
     {
+        Enemy _enemy;
         Player _player;
         public Player CurrentPlayer 
         { get
@@ -19,28 +21,44 @@ namespace SungSiKyung.Script.Managers
                 return _player;
             } 
         }
+        public Enemy Currentenemy
+        {
+            get
+            {
+                if (_enemy == null) { CreateEnemy(); }
+                return _enemy;
+            } 
+        }
+        
         public void Init()
         {
             
         }
+        
         void CreatePlayer()
         {
             _player = new Player();
         }
+        void CreateEnemy()
+        {
+            _enemy = new Enemy();
+        }
         public void StartGame()
         {
-            Managers.SceneMgr.SwitchScene(Define.SceneType.Game);
             CreatePlayer();
-            Managers.SceneMgr.CurrentScene.AddUnit(_player);
+            CreateEnemy();
+            Managers.SceneMgr.SwitchScene(Define.SceneType.MainMenu);
+
             while (true)
             {
                 Managers.InputMgr.GetInput();
+                Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
                 if (Managers.TimingMgr.FrameControl())
                 {
-                    Managers.PhysicMgr.ApplyPhysic(Managers.SceneMgr.CurrentScene);
                     Managers.RenderMgr.RenderScene();
                 }
             }
         }
     }
 }
+

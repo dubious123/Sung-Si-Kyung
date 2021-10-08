@@ -11,14 +11,14 @@ namespace SungSiKyung.Script.Utils
         public float y;
         public float Magnitude { get; }
         public Vector2 normalized => this / Magnitude;
-        public float sqrMagnitude { get; }
+        public float SqrMagnitude { get; }
         public static Vector2 zero { get; } = new Vector2(0, 0);
         public Vector2(float x, float y)
         {
             this.x = x;
             this.y = y;
-            sqrMagnitude = x * x + y * y;
-            Magnitude = MathF.Sqrt(sqrMagnitude);
+            SqrMagnitude = x * x + y * y;
+            Magnitude = MathF.Sqrt(SqrMagnitude);
         }
         public bool Equals(Vector2 other)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SungSiKyung.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -14,45 +15,7 @@ namespace SungSiKyung.Script.Managers
 
         }
 
-        public class Data
-        {
 
-        }
-
-        public class Image : Data
-        {
-
-            public int[,] inputPixel;
-
-            public Image(int[,] inputPixel)
-            {
-                this.inputPixel = inputPixel;
-            }
-        }
-
-        public class Pixel
-        {
-
-        }
-
-        public static int[,] pixel1 = {{ 0, 1, 1, 1, 1 },{0,1,1,1,1},{0,1,1,1,1},{0,1,1,1,1},{0,0,1,0,0},{0,1,1,1,0},
-            {1,0,1,0,1},{1,0,1,0,1},{0,0,1,0,0},{0,1,0,1,0},{1,0,0,0,1},{1,0,0,0,1} };
-        public static int[,] pixel2 = {{0,0,0,0,0},{0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,0,1,0,0},
-            { 0,1,1,1,0},{ 1,0,1,0,1},{ 1,0,1,0,1},{ 0,1,0,1,0},{ 1,0,0,0,1},{ 1,0,0,0,1}};
-
-        static Dictionary<string, Image> dicPixel = new Dictionary<string, Image>()
-        {
-            {"idle1", new Image(pixel1) },
-            {"idle2", new Image(pixel2) }
-        };
-
-        public static int[,] Load<T>(string _value) where T : Data
-        {
-
-            if (dicPixel.ContainsKey(_value))
-                return dicPixel[_value].inputPixel;
-            else
-                return null;
-        }
+        
     }
 }
