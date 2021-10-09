@@ -40,7 +40,7 @@ namespace SungSiKyung.Script.Utils
             else { x1 = go1.Transform.Boundary.Xmin; x2 = go2.Transform.Boundary.Xmax; }
             if (dist.y > 0) { y1 = go1.Transform.Boundary.Ymax; y2 = go2.Transform.Boundary.Ymin; }
             else { y1 = go1.Transform.Boundary.Ymin; y2 = go2.Transform.Boundary.Ymax; }
-            return Math.Abs(dist.x) < Math.Abs(x1) + Math.Abs(x2) || Math.Abs(dist.y) < Math.Abs(y1) + Math.Abs(y2);
+            return Math.Abs(dist.x) < Math.Abs(x1) + Math.Abs(x2) && Math.Abs(dist.y) < Math.Abs(y1) + Math.Abs(y2);
         }
     }
 }

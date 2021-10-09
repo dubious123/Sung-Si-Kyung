@@ -20,7 +20,7 @@ namespace SungSiKyung.Scene
             base.StartScene();
 
             GameObject_Static floor = new GameObject_Static();
-            floor.Transform.Boundary = new Box(-25, 25, -1, 1);
+            floor.Transform.Boundary = new Box(-50, 50, -1, 1);
             floor.Transform.Position = new Vector2Int(50, 50);
             Collider floorCollider = new Collider(floor, 1f);
             floor.AddComponent(floorCollider);

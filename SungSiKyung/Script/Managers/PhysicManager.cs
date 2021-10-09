@@ -44,15 +44,10 @@ namespace SungSiKyung.Script.Managers
             PlayerController controller = unit.GetComponent<PlayerController>();
             if (controller != null)
             {
-                if (Math.Abs(unit.Velocity.x) > controller.MaxVelocity_Side)
-                {
-                    if (unit.Velocity.x < 0) { unit.Velocity.x = controller.MaxVelocity_Side * -1; }
-                    else if (unit.Velocity.x >= 0) { unit.Velocity.x = controller.MaxVelocity_Side; }
-                }
+                unit.Velocity.x /= 2;
                 if (Math.Abs(unit.Velocity.y) > controller.MaxVelocity_Up)
                 {
-                    if (unit.Velocity.y < 0) { unit.Velocity.y = controller.MaxVelocity_Up * -1; }
-                    else if (unit.Velocity.y >= 0) { unit.Velocity.y = controller.MaxVelocity_Up; }
+                    if (unit.Velocity.y >= 0) { unit.Velocity.y = controller.MaxVelocity_Up; }
                 }
             }
             float ratio = 0;
@@ -62,20 +57,21 @@ namespace SungSiKyung.Script.Managers
             {
                 ratio += Managers.TimingMgr.DeltaTime;
                 unit.Transform.Position = Vector2.Lerp(from, dest, ratio);
-                CalculateCollision(unit);
-                if(ratio > 1) { break; }
+                if (CalculateCollision(unit)) { break; }               
+                if (ratio > 1) { break; }
             }
         }
-        void CalculateCollision(GameObject unit)
+        bool CalculateCollision(GameObject unit)
         {
             foreach (GameObject_Static go_st in Managers.SceneMgr.CurrentScene.StaticSet)
             {
                 if (Box.CheckOverlap(go_st, unit))
                 {
                     go_st.GetComponent<Collider>()?.InvokeColliderEvent(unit);
-                    unit.GetComponent<Collider>()?.InvokeColliderEvent(unit);
+                    return true;
                 }
             }
+            return false;
         }
 
         void CaculateCollides(GameObject unit)

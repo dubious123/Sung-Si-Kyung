@@ -28,7 +28,7 @@ namespace SungSiKyung.Components
         public Collider(GameObject go,float elastic)
         {
             ElasticModulus = elastic;
-            CollisionEvent += (GameObject go) => go.Velocity.y = go.Velocity.y > 0 ? (go.Velocity.y *= -ElasticModulus) : go.Velocity.y;
+            CollisionEvent += (GameObject go) => go.Velocity.y = -4;
             gameObject = go;
             _colliderDots = go.Transform.Boundary.Bounds;
         }
