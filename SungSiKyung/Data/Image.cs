@@ -26,6 +26,7 @@ namespace SungSiKyung.Data
         {
             PrintChar.Add(0, ' ');
             PrintChar.Add(1, '■');
+            PrintChar.Add(2, '□');
 
             _pixels = new List<Pixel>();
             int _width = arr.GetLength(1);
@@ -44,6 +45,11 @@ namespace SungSiKyung.Data
                     {
                         if (x < _width - 1 && arr[y, x] == arr[y, x + 1])
                         {
+                            /*
+                            _pixels.Add(new Pixel(new Vector2Int(x + _offsetX, y + _offsetY), '#'));
+                            x++;
+                            _pixels.Add(new Pixel(new Vector2Int(x + _offsetX, y + _offsetY), '#'));
+                            */
                             _pixels.Add(new Pixel(new Vector2Int(x + _offsetX, y + _offsetY), PrintChar[arr[y, x]]));
                             x++;
                             _pixels.Add(new Pixel(new Vector2Int(x + _offsetX, y + _offsetY), '\0'));

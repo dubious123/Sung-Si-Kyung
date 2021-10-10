@@ -19,22 +19,31 @@ namespace SungSiKyung.Script.Managers
         public char[][] ScreenBuilder { get { return _builder; } }
         char[][] _builder;
         StringBuilder _sb;
+        int ConsoleWidthLength;
+        int ConsoleHeightLength;
         int _builderWidthLength;
         int _builderHeightLength;
         RenderData BGdata;
         Vector2Int BGpos;
+        int CameraX;
+        int CameraY;
         public void Init()
         {
             //Test
             _sb = new StringBuilder();
             Console.CursorVisible = false;
             SetWindowSize();
-            _builderWidthLength = Console.WindowWidth;
-            _builderHeightLength = Console.WindowHeight;
-            _builder = new char[Console.WindowHeight][];
-            for (int i = 0; i < Console.WindowHeight; i++)
+            ConsoleWidthLength = Console.WindowWidth;
+            ConsoleHeightLength = Console.WindowHeight;
+            _builderWidthLength = Console.WindowWidth * 2;
+            _builderHeightLength = Console.WindowHeight * 2;
+            CameraX = 0;
+            CameraY = 0;
+
+            _builder = new char[_builderHeightLength][];
+            for (int i = 0; i < _builderHeightLength; i++)
             {
-                _builder[i] = new char[Console.WindowWidth];
+                _builder[i] = new char[_builderWidthLength];
                 /*
                 for (int j = 0; j < Console.WindowWidth; j++)
                 {
@@ -44,7 +53,7 @@ namespace SungSiKyung.Script.Managers
                 */
             }
             BGdata = null;
-            BGpos = new Vector2Int(Define.ConsoleWidth / 2, Define.ConsoleHeight / 2);
+            BGpos = new Vector2Int(Define.ConsoleWidth, Define.ConsoleHeight);
         }
         void SetWindowSize()
         {
@@ -81,15 +90,15 @@ namespace SungSiKyung.Script.Managers
         {
             ClearConsole();
             RenderBG(Managers.SceneMgr.CurrentScene);
-            //RenderBuilder();
             Animator.ApplyAnimator(Managers.SceneMgr.CurrentScene);
             RenderDynamic();
             RenderStatic();
-            for (int y = 0; y < _builder.GetLength(0) - 1; y++)
+            Camera();
+            for (int y = CameraY; y < CameraY + _builder.GetLength(0) / 2 - 1; y++)
             {
-                _sb.AppendLine(new string(_builder[y]));
+                _sb.AppendLine(BuilderToString(_builder[y]));
             }
-            _sb.Append(new string(_builder[Console.WindowHeight - 1]));
+            _sb.Append(BuilderToString(_builder[CameraY + _builderHeightLength / 2 - 1]));
             Console.Write(_sb);
         }
         void RenderDynamic()
@@ -114,7 +123,7 @@ namespace SungSiKyung.Script.Managers
                     BGdata = null;
                     break;
                 case Define.SceneType.Game:
-                    BGdata = Librarys.Find<Image>("BG1");
+                    BGdata = Librarys.Find<Image>("BG2");
                     break;
                 case Define.SceneType.Ending_PlayerDead:
                     BGdata = null;
@@ -128,16 +137,76 @@ namespace SungSiKyung.Script.Managers
                 (BGdata as Image).PrintImage(BGpos);
             }
         }
+
+        void Camera()
+        {
+            int x = 0;
+            int y = 0;
+            x = (int)Managers.GameMgr.CurrentPlayer.Transform.Position.x;
+            y = (int)Managers.GameMgr.CurrentPlayer.Transform.Position.y;
+            if (x < _builderWidthLength / 4)
+            {
+                CameraX = 0;
+            }
+            else if (x > _builderWidthLength * 3 / 4)
+            {
+                CameraX = _builderWidthLength / 2;
+            }
+            else
+            {
+                CameraX = x - _builderWidthLength / 4;
+            }
+
+            if (y < _builderHeightLength / 4)
+            {
+                CameraY = 0;
+            }
+            else if (y > _builderHeightLength * 3 / 4)
+            {
+                CameraY = _builderHeightLength / 2;
+            }
+            else
+            {
+                CameraY = y - _builderHeightLength / 4;
+            }
+        }
+        /*
         void RenderBuilder()
         {
             for (int y = 0; y < _builder.GetLength(0) - 1; y++)
             {
                 _sb.AppendLine(new string(_builder[y]));
             }
-            _sb.Append(new string(_builder[Console.WindowHeight - 1]));
+            _sb.Append(new string(_builder[_builderHeightLength - 1]));
             Console.Write(_sb);
         }
-
-
+        */
+        string BuilderToString(char[] builder)
+        {
+            string s;
+            if (builder[CameraX + _builderWidthLength / 2 - 1] == '\0')
+            {
+                if (builder[CameraX] == '\0')
+                {
+                    s = " " + new string(builder).Substring(CameraX, _builderWidthLength / 2 - 1);
+                }
+                else
+                {
+                    s = new string(builder).Substring(CameraX, _builderWidthLength / 2 - 1);
+                }
+            }
+            else
+            {
+                if (builder[CameraX] == '\0')
+                {
+                    s = " " + new string(builder).Substring(CameraX, _builderWidthLength / 2 - 1) + " ";
+                }
+                else
+                {
+                    s = new string(builder).Substring(CameraX, _builderWidthLength / 2 - 1) + " ";
+                }
+            }
+            return s;
+        }
     }
 }
