@@ -40,8 +40,10 @@ namespace SungSiKyung.Script.Managers
                     return new MainMenuScene();
                 case Define.SceneType.Game:
                     return new GameScene();
-                case Define.SceneType.Ending:
+                case Define.SceneType.Ending_PlayerDead:
                     return new Ending_PlayerDeadScene();
+                case Define.SceneType.Credit:
+                    return new CreditScene();
                 default:
                     return null;
             }

@@ -6,16 +6,11 @@ namespace SungSiKyung.Data
 {
     class MapLibrary : BaseLibrary
     {
-        public static int[,] map1 = {{ 0, 1, 1, 1, 1 },{0,1,1,1,1},{0,1,1,1,1},{0,1,1,1,1},{0,0,1,0,0},{0,1,1,1,0},
-            {1,0,1,0,1},{1,0,1,0,1},{0,0,1,0,0},{0,1,0,1,0},{1,0,0,0,1},{1,0,0,0,1} };
-        public static int[,] map2 = {{0,0,0,0,0},{0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,1,1,1,1},{ 0,0,1,0,0},
-            { 0,1,1,1,0},{ 1,0,1,0,1},{ 1,0,1,0,1},{ 0,1,0,1,0},{ 1,0,0,0,1},{ 1,0,0,0,1}};
         public static Dictionary<string, Map> _mapDict = new Dictionary<string, Map>();
 
         public MapLibrary()
         {
-            _mapDict.Add("map1", new Map(map1));
-            _mapDict.Add("map2", new Map(map2));
+
         }
 
 

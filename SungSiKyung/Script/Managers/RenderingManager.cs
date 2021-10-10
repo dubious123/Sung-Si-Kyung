@@ -125,7 +125,7 @@ namespace SungSiKyung.Script.Managers
                 case Define.SceneType.Game:
                     BGdata = Librarys.Find<Image>("BG2");
                     break;
-                case Define.SceneType.Ending:
+                case Define.SceneType.Ending_PlayerDead:
                     BGdata = null;
                     break;
                 default:
