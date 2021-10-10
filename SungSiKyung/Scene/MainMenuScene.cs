@@ -33,8 +33,8 @@ namespace SungSiKyung.Scene
         }
         public override void SetButtons()
         {
-            CreateButton("Start Game", new Vector2Int(100, 50),()=> Managers.SceneMgr.SwitchScene(Define.SceneType.Game));
-            CreateButton("Exit Game", new Vector2Int(100, 40),()=>throw new Exception());
+            CreateButton("Start Game", new Vector2Int(Define.ConsoleWidth / 2 - 5, Define.ConsoleHeight / 2 + 5),()=> Managers.SceneMgr.SwitchScene(Define.SceneType.Game));
+            CreateButton("Exit Game", new Vector2Int(Define.ConsoleWidth / 2 - 5, Define.ConsoleHeight / 2 - 5),()=>throw new Exception());
         }
 
     }

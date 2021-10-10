@@ -37,6 +37,8 @@ namespace SungSiKyung.Scene
             PlayerController controller = Managers.GameMgr.CurrentPlayer.GetComponent<PlayerController>();
             InputMap.GetAction("LeftArrow").AddListener("LeftArrow", () => controller.MoveLeft());
             InputMap.GetAction("RightArrow").AddListener("RightArrow", () => controller.MoveRight());
+            InputMap.AddInputAction("Quit", new ConsoleKeyInfo('q', ConsoleKey.Q, false, false, false));
+            InputMap.GetAction("Quit").AddListener("Quit",()=> Managers.SceneMgr.SwitchScene(Define.SceneType.Ending_PlayerDead));
         }
     }
 

@@ -22,7 +22,8 @@ namespace SungSiKyung.Script.Utils
         { 
             MainMenu,
             Game,
-            Ending,
+            Ending_PlayerDead,
+            Credit,
         }
         public enum Player_MoveState 
         {
